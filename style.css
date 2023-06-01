@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --var-bgcolor: white;
+  --var-contentcolor: hsla(240, 6%, 21%, 1);
+  --var-fill-color: #323238;
+  --var-fillcolor-hover: white;
+  --var-cardcolor: hsla(240, 9%, 89%, 1);
+  --var-cardcolor-hover: hsla(194, 97%, 31%, 1);
+}
+
+.darkMode:root {
+  font-size: 62.5%;
+  --var-bgcolor: #121214;
+  --var-contentcolor: white;
+  --var-contentcolor-hover: white;
+  --var-fill-color: #C4C4CC;
+  --var-cardcolor: hsla(240, 6%, 17%, 1);
+  --var-cardcolor-hover: hsla(195, 74%, 15%, 1);
+}
+
+main svg path {
+  fill: var(--var-fill-color);
+}
+
+.hide {
+  display: none;
+}
+
+.lightButton, .darkButton {
+  position: absolute;
+  right: calc(3% + 2rem);
+  top: calc(5% + 2rem);
+  cursor: pointer;
+  width: fit-content;
+
+  transition: transform 0.4s ease;
+}
+
+.lightButton:hover, .darkButton:hover {
+  transform: scale(1.1);
+}
+
+.playing, .playing path {
+  background-color: var(--var-cardcolor-hover) !important;
+  fill: var(--var-fillcolor-hover);
+  transition: background-color 0.6s ease;
+}
+
+.playing:hover, .playing:hover path{
+  background-color: #e48888 !important;
+  fill: #323238 !important;
+  transition: background-color 2s ease;
+}
+
+
+body {
+  display: grid;
+  min-height: 100vh;
+  background-color: var(--var-bgcolor);
+}
+
+main {
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  gap: 19.2rem;
+}
+
+#timer {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12.6rem;
+  line-height: 14.8rem;
+
+  color: var(--var-contentcolor);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#controls {
+  margin-top: 4.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#controls button{
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap:3.2rem;
+}
+
+.grid-item {
+  background-color: var(--var-cardcolor);
+  padding: 2rem;
+  border-radius: 2.4rem;
+  padding: 4.8rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+
+
+  transition: background-color 0.6s ease, fill  0.3s ease;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  height: .4rem;
+  width: 9rem;
+  border-radius: 0.5rem;
+  background-color: var(--var-fill-color);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove o estilo padrão do navegador */
+  width: 16px; /* Define a largura do "thumb" */
+  height: 16px; /* Define a altura do "thumb" */
+  background-color: var(--var-fill-color); /* Define a cor do "thumb" */
+  border-radius: 50%; /* Define o formato arredondado do "thumb" */
+  cursor: pointer; /* Altera o cursor quando o usuário passa o mouse sobre o "thumb" */
+}
+
+input[type="range"]::-webkit-slider-thumb:active,
+input[type="range"]::-webkit-slider-thumb:focus {
+  outline: none;
+}
+
+input[type=range]:hover, input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: var(--var-fillcolor-hover);
+}
+
+.grid-item:hover path, .grid-item:hover input[type="range"], .grid-item:hover input[type="range"]::-webkit-slider-thumb {
+  background-color: var(--var-fillcolor-hover);
+  fill: var(--var-fillcolor-hover);
+}
+
+.grid-item:hover {
+  background-color: var(--var-cardcolor-hover);
+}
+
+@media (max-width: 790px) {
+  main {
+    margin-block: 5rem;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .lightButton, .darkButton {
+    position: fixed;
+    top: auto;
+    right: calc(3% + 2rem);
+    bottom: calc(5% + 2rem);
+  }
+  
+}
